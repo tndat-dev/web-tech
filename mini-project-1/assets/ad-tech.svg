@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 360" role="img" aria-label="Technology advertisement">
+  <rect width="900" height="360" fill="#ecfeff"/>
+  <rect x="70" y="70" width="760" height="220" rx="24" fill="#fff" stroke="#0f766e" stroke-width="8"/>
+  <text x="450" y="165" text-anchor="middle" font-family="Arial, sans-serif" font-size="44" font-weight="700" fill="#115e59">Web Technologies</text>
+  <text x="450" y="225" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" fill="#1d4ed8">Reference Materials</text>
+</svg>

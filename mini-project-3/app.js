@@ -1,12 +1,12 @@
-const STORAGE_KEY = "it4409-mini3-state-v2";
+const STORAGE_KEY = "it4409-mini3-state-v4";
 const defaults = {
   activeTop: "wiki",
   activeLeft: "wiki-search",
   selectedItem: "wiki-search-main",
   topMenus: [
-    { id: "home", title: "Trang chu", leftMenus: [
-      { id: "home-intro", title: "Gioi thieu", items: [
-        { id: "home-html", title: "Mini Project #3", type: "html", span: 12, keyword: "", page: "", html: "<h2>AJAX with Wikipedia API</h2><p>Menu My Wiki ben canh su dung fetch de lay du lieu truc tiep tu Wikipedia.</p>" }
+    { id: "home", title: "Home", leftMenus: [
+      { id: "home-intro", title: "Introduction", items: [
+        { id: "home-html", title: "Mini Project #3", type: "html", span: 12, keyword: "", page: "", html: "<h2>AJAX with Wikipedia API</h2><p>The My Wiki menu uses fetch to load live data directly from Wikipedia.</p>" }
       ] }
     ] },
     { id: "wiki", title: "My Wiki", leftMenus: [
@@ -61,7 +61,7 @@ function currentItem() {
 function render() {
   const top = currentTop();
   const left = currentLeft();
-  document.querySelector(".logo").classList.toggle("active", state.activeTop === "home");
+  document.querySelector(".logo").classList.toggle("active", state.activeTop === "wiki");
   topMenu.innerHTML = state.topMenus
     .filter(menu => menu.id !== "home")
     .map(menu => `<button class="${menu.id === state.activeTop ? "active" : ""}" data-top="${menu.id}">${menu.title}</button>`)
@@ -81,34 +81,34 @@ function renderEditor(left) {
           ${left.items.map(entry => `<option value="${entry.id}" ${entry.id === item.id ? "selected" : ""}>${entry.title}</option>`).join("")}
         </select>
       </label>
-      <label>Loai content
+      <label>Content type
         <select id="type-select">
           ${["html", "search", "summary", "random"].map(type => `<option value="${type}" ${type === item.type ? "selected" : ""}>${typeLabel(type)}</option>`).join("")}
         </select>
       </label>
-      <label>Do rong
+      <label>Width
         <select id="span-select">
-          <option value="12" ${item.span === 12 ? "selected" : ""}>12 cot</option>
-          <option value="6" ${item.span === 6 ? "selected" : ""}>6 cot</option>
-          <option value="4" ${item.span === 4 ? "selected" : ""}>4 cot</option>
+          <option value="12" ${item.span === 12 ? "selected" : ""}>12 columns</option>
+          <option value="6" ${item.span === 6 ? "selected" : ""}>6 columns</option>
+          <option value="4" ${item.span === 4 ? "selected" : ""}>4 columns</option>
         </select>
       </label>
-      <label>Tieu de
+      <label>Title
         <input id="title-input" value="${escapeAttr(item.title)}">
       </label>
       <label>Search keyword
-        <input id="keyword-input" value="${escapeAttr(item.keyword)}" placeholder="Vi du: Web technology">
+        <input id="keyword-input" value="${escapeAttr(item.keyword)}" placeholder="Example: Web technology">
       </label>
       <label>Wikipedia page title
-        <input id="page-input" value="${escapeAttr(item.page)}" placeholder="Vi du: JavaScript">
+        <input id="page-input" value="${escapeAttr(item.page)}" placeholder="Example: JavaScript">
       </label>
       <label class="wide">HTML content
         <textarea id="html-input">${escapeHtml(item.html)}</textarea>
       </label>
       <div class="wide editor-actions">
-        <button class="btn" id="save-editor">Cap nhat preview</button>
-        <button class="btn secondary" id="add-item">+ Them content item</button>
-        <button class="btn danger" id="delete-item">Xoa item dang chon</button>
+        <button class="btn" id="save-editor">Update preview</button>
+        <button class="btn secondary" id="add-item">+ Add content item</button>
+        <button class="btn danger" id="delete-item">Delete selected item</button>
       </div>
     </div>`;
 }
@@ -117,7 +117,7 @@ function renderItems(left) {
   contentGrid.innerHTML = left.items.map(item => `
     <article class="wiki-card" data-span="${item.span}" id="${item.id}">
       <h2>${item.title}</h2>
-      <div class="wiki-body" data-render="${item.id}"><p class="muted">Dang tai noi dung...</p></div>
+      <div class="wiki-body" data-render="${item.id}"><p class="muted">Loading content...</p></div>
     </article>
   `).join("");
   left.items.forEach(renderItemBody);
@@ -128,7 +128,7 @@ async function renderItemBody(item) {
   if (!target) return;
   try {
     if (item.type === "html") {
-      target.innerHTML = item.html || "<p class='muted'>Chua co noi dung HTML.</p>";
+      target.innerHTML = item.html || "<p class='muted'>No HTML content yet.</p>";
     } else if (item.type === "search") {
       renderSearchItem(target, item);
     } else if (item.type === "summary") {
@@ -137,7 +137,7 @@ async function renderItemBody(item) {
       await renderRandomItem(target);
     }
   } catch (error) {
-    target.innerHTML = `<p class="error">Khong tai duoc du lieu Wikipedia: ${escapeHtml(error.message)}</p>`;
+    target.innerHTML = `<p class="error">Could not load Wikipedia data: ${escapeHtml(error.message)}</p>`;
   }
 }
 
@@ -147,14 +147,14 @@ function renderSearchItem(target, item) {
       <input value="${escapeAttr(item.keyword || "")}" placeholder="Enter a search term..." data-search-input="${item.id}">
       <button class="btn" data-run-search="${item.id}">Search</button>
     </div>
-    <div class="result-list" data-search-results="${item.id}"><p class="muted">Nhap tu khoa de tim tren Wikipedia.</p></div>`;
+    <div class="result-list" data-search-results="${item.id}"><p class="muted">Enter a keyword to search Wikipedia.</p></div>`;
   runSearch(item.id, item.keyword);
 }
 
 async function runSearch(itemId, keyword) {
   const resultBox = document.querySelector(`[data-search-results="${itemId}"]`);
   if (!resultBox || !keyword) return;
-  resultBox.innerHTML = "<p class='muted'>Dang tim kiem...</p>";
+  resultBox.innerHTML = "<p class='muted'>Searching...</p>";
   const url = `https://en.wikipedia.org/w/api.php?action=query&list=search&prop=info|extracts&inprop=url&utf8=&format=json&origin=*&srlimit=8&srsearch=${encodeURIComponent(keyword)}`;
   const response = await fetch(url);
   const data = await response.json();
@@ -174,8 +174,8 @@ async function renderSummaryItem(target, item) {
   target.innerHTML = `
     ${data.thumbnail ? `<img src="${data.thumbnail.source}" alt="${escapeAttr(data.title)}" style="max-width:180px;border-radius:8px;float:right;margin:0 0 10px 12px">` : ""}
     <h3>${escapeHtml(data.title)}</h3>
-    <p>${escapeHtml(data.extract || "Khong co tom tat.")}</p>
-    <p><a href="${data.content_urls.desktop.page}" target="_blank" rel="noopener">Doc tren Wikipedia</a></p>`;
+    <p>${escapeHtml(data.extract || "No summary is available.")}</p>
+    <p><a href="${data.content_urls.desktop.page}" target="_blank" rel="noopener">Read on Wikipedia</a></p>`;
 }
 
 async function renderRandomItem(target) {
@@ -186,13 +186,13 @@ async function renderRandomItem(target) {
   target.innerHTML = `
     <h3>${escapeHtml(page.title)}</h3>
     <p>${escapeHtml((page.extract || "").slice(0, 700))}${page.extract?.length > 700 ? "..." : ""}</p>
-    <p><a href="${page.fullurl}" target="_blank" rel="noopener">Mo bai viet ngau nhien</a></p>
-    <button class="btn" data-refresh-random>Lay bai khac</button>`;
+    <p><a href="${page.fullurl}" target="_blank" rel="noopener">Open the random article</a></p>
+    <button class="btn" data-refresh-random>Load another article</button>`;
 }
 
 function typeLabel(type) {
   return {
-    html: "Loai HTML",
+    html: "HTML",
     search: "Wikipedia Search",
     summary: "Wikipedia Page Summary",
     random: "Wikipedia Random Article"
@@ -223,9 +223,9 @@ document.addEventListener("click", event => {
     render();
   }
   if (event.target.closest(".logo")) {
-    state.activeTop = "home";
-    state.activeLeft = "home-intro";
-    state.selectedItem = "home-html";
+    state.activeTop = "wiki";
+    state.activeLeft = "wiki-search";
+    state.selectedItem = "wiki-search-main";
     save();
     render();
   }
@@ -262,12 +262,12 @@ document.addEventListener("click", event => {
     const left = currentLeft();
     const item = {
       id: uid("wiki-item"),
-      title: "Content item moi",
+      title: "New content item",
       type: "search",
       span: 12,
       keyword: "Web service",
       page: "",
-      html: "<h2>Content item moi</h2><p>Doi loai content va du lieu trong My Wiki Admin.</p>"
+      html: "<h2>New content item</h2><p>Change the content type and data in My Wiki Admin.</p>"
     };
     left.items.push(item);
     state.selectedItem = item.id;
@@ -276,7 +276,7 @@ document.addEventListener("click", event => {
   }
   if (event.target.id === "delete-item") {
     const left = currentLeft();
-    if (left.items.length <= 1) return alert("Can giu lai toi thieu mot content item trong menu left nay.");
+    if (left.items.length <= 1) return alert("Keep at least one content item in this left menu.");
     left.items = left.items.filter(item => item.id !== state.selectedItem);
     state.selectedItem = left.items[0].id;
     save();

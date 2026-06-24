@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyGmail - Web Services API Integration</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">IT4409 Web Services API</p>
+      <h1>MyGmail</h1>
+    </div>
+    <div class="student">Nguyen Tuan Dat - 20235907</div>
+  </header>
+
+  <main class="app-shell">
+    <section class="panel setup-panel">
+      <h2>API Configuration</h2>
+      <p class="muted">Enter your credentials once. They are stored only in this browser's localStorage.</p>
+      <div class="form-grid">
+        <label>Google OAuth Client ID
+          <input id="google-client-id" placeholder="example.apps.googleusercontent.com">
+        </label>
+        <label>Gemini API Key
+          <input id="gemini-api-key" type="password" placeholder="AIza...">
+        </label>
+        <label>NganLuong Merchant ID
+          <input id="nganluong-merchant-id" placeholder="Merchant/Seller ID">
+        </label>
+        <label>NganLuong Receiver Email
+          <input id="nganluong-receiver" placeholder="merchant@example.com">
+        </label>
+      </div>
+      <div class="toolbar">
+        <button class="btn" id="save-config">Save configuration</button>
+        <button class="btn secondary" id="clear-config">Clear saved configuration</button>
+      </div>
+    </section>
+
+    <section class="dashboard">
+      <article class="panel">
+        <h2>1. Google Login</h2>
+        <p id="auth-status" class="status warning">Not signed in.</p>
+        <div class="toolbar">
+          <button class="btn" id="google-login">Sign in with Google</button>
+          <button class="btn secondary" id="google-logout">Sign out</button>
+        </div>
+      </article>
+
+      <article class="panel">
+        <h2>2. Check & Receive Mail</h2>
+        <div class="toolbar">
+          <button class="btn" id="load-inbox">Load inbox</button>
+          <button class="btn secondary" id="load-unread">Load unread</button>
+        </div>
+        <div id="mail-list" class="mail-list empty">Sign in and load your Gmail messages.</div>
+      </article>
+
+      <article class="panel">
+        <h2>3. Send Mail</h2>
+        <div class="form-stack">
+          <label>To
+            <input id="mail-to" placeholder="receiver@example.com">
+          </label>
+          <label>Subject
+            <input id="mail-subject" placeholder="Message subject">
+          </label>
+          <label>Message
+            <textarea id="mail-body" placeholder="Write your email here..."></textarea>
+          </label>
+          <button class="btn" id="send-mail">Send email</button>
+        </div>
+        <p id="send-status" class="status muted">Ready.</p>
+      </article>
+
+      <article class="panel">
+        <h2>4. Gemini Chatbot</h2>
+        <div id="chat-log" class="chat-log empty">Ask Gemini a question after saving your API key.</div>
+        <div class="chat-input">
+          <input id="chat-message" placeholder="Ask about Gmail, web services, or anything else...">
+          <button class="btn" id="send-chat">Send</button>
+        </div>
+      </article>
+
+      <article class="panel payment-panel">
+        <h2>5. NganLuong Payment</h2>
+        <p class="muted">Real NganLuong payment requires merchant credentials and server-side request signing. This panel prepares a payment request payload for integration testing.</p>
+        <div class="form-grid">
+          <label>Order ID
+            <input id="order-id" value="IT4409-20235907">
+          </label>
+          <label>Amount VND
+            <input id="payment-amount" type="number" value="10000" min="1000">
+          </label>
+          <label>Description
+            <input id="payment-description" value="MyGmail demo payment">
+          </label>
+          <label>Return URL
+            <input id="return-url" value="http://localhost/mygmail/payment-return">
+          </label>
+        </div>
+        <div class="toolbar">
+          <button class="btn" id="build-payment">Build payment payload</button>
+          <a class="btn secondary" href="https://www.nganluong.vn/vn/integrate/overview.html" target="_blank" rel="noopener">Open NganLuong docs</a>
+        </div>
+        <pre id="payment-output" class="payment-output">Payment payload will appear here.</pre>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer">
+    Mini Project #4 - MyGmail API integration: Google Auth, Gmail API, Gemini API, and NganLuong payment preparation.
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

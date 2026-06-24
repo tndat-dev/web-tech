@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Huong dan layout contents</title>
+  <title>Content Layout Guide</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body class="help-body">
   <main class="help-page">
-    <h1>Huong dan thiet lap layout contents</h1>
-    <p>Project nay dung CSS Grid responsive 12 cot. Moi content item co cac tham so:</p>
+    <h1>Content Layout Guide</h1>
+    <p>This project uses a responsive 12-column CSS Grid. Each content item has these settings:</p>
     <ul>
-      <li><strong>Grid column span:</strong> so cot item chiem tren desktop, tu 1 den 12.</li>
-      <li><strong>Grid row span:</strong> so hang tuong doi item chiem, tu 1 den 4.</li>
-      <li><strong>CSS bo sung:</strong> co the them style inline an toan nhu <code>background:#eef;</code> hoac <code>min-height:180px;</code>.</li>
+      <li><strong>Grid column span:</strong> the number of columns used on desktop, from 1 to 12.</li>
+      <li><strong>Grid row span:</strong> the relative number of rows used by the item, from 1 to 4.</li>
+      <li><strong>Extra CSS:</strong> optional inline styles such as <code>background:#eef;</code> or <code>min-height:180px;</code>.</li>
     </ul>
-    <p>Tren tablet, item tu dong gioi han toi da 6 cot. Tren phone, moi item chiem 12 cot de doc de hon.</p>
+    <p>On desktop and tablet screens, each item uses the configured column span. On phones, every item automatically spans 12 columns for readability.</p>
   </main>
 </body>
 </html>

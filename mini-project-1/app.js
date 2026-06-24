@@ -1,88 +1,88 @@
-const image = "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=900&q=80";
+const image = "assets/web-learning.svg";
 
 const sections = {
   home: {
-    title: "Van hanh mon hoc",
+    title: "Course Operations",
     articles: [
       {
         id: "opening",
-        title: "Thong tin khai giang",
-        text: "Mon hoc IT4409 gioi thieu cac nen tang cua HTML, CSS, JavaScript, React, Web API, backend, bao mat va trien khai ung dung web. Sinh vien thuc hanh thong qua cac mini project tang dan ve do phuc tap.",
+        title: "Opening Information",
+        text: "IT4409 introduces the foundations of HTML, CSS, JavaScript, React, Web APIs, backend development, web security, and deployment. Students practice through mini projects with gradually increasing complexity.",
         img: image,
-        ad: ["Tai lieu mon hoc", "https://sis.hust.edu.vn"]
+        ad: ["Course resources", "https://sis.hust.edu.vn", "assets/ad-docs.svg"]
       },
       {
         id: "seminar",
-        title: "Seminar va bai tap lon",
-        text: "Cac buoi seminar tap trung vao backend, deployment va tich hop dich vu truc tuyen. Sinh vien can chuan bi demo chay truc tiep tren browser va giai thich duoc cac quyet dinh ky thuat.",
-        img: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=900&q=80",
-        ad: ["Xem slide deployment", "../docs/lec_10-deployment_3.4m.pdf"]
+        title: "Seminars and Major Assignments",
+        text: "Seminars focus on backend development, deployment, and online service integration. Students should prepare browser-based demos and be ready to explain their technical decisions.",
+        img: "assets/seminar.svg",
+        ad: ["View deployment slides", "../docs/lec_10-deployment_3.4m.pdf", "assets/ad-docs.svg"]
       }
     ]
   },
   course: {
-    title: "Thong tin mon hoc",
+    title: "Course Information",
     articles: [
       {
         id: "overview",
-        title: "Mo ta hoc phan",
-        text: "IT4409 - Cong nghe Web va dich vu truc tuyen cung cap kien thuc ve thiet ke giao dien, lap trinh phia client, giao tiep voi Web API, xay dung backend, bao mat co ban va tich hop cac dich vu online.",
-        img: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80",
-        ad: ["Cong thong tin dao tao HUST", "https://ctt.hust.edu.vn"]
+        title: "Course Description",
+        text: "IT4409 - Web Technologies and e-Services provides knowledge about interface design, client-side programming, Web API communication, backend development, basic security, and online service integration.",
+        img: "assets/course.svg",
+        ad: ["HUST academic portal", "https://ctt.hust.edu.vn", "assets/ad-docs.svg"]
       },
       {
         id: "outcomes",
-        title: "Chuan dau ra",
-        text: "Sau mon hoc, sinh vien co the xay dung website responsive, thao tac DOM bang JavaScript, goi API bang AJAX/fetch, to chuc noi dung dong va trien khai ung dung web co tich hop dich vu.",
-        img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80",
-        ad: ["W3Schools Web Tutorials", "https://www.w3schools.com"]
+        title: "Learning Outcomes",
+        text: "After the course, students can build responsive websites, manipulate the DOM with JavaScript, call APIs with AJAX/fetch, organize dynamic content, and deploy web applications with service integrations.",
+        img: "assets/web-learning.svg",
+        ad: ["W3Schools Web Tutorials", "https://www.w3schools.com", "assets/ad-docs.svg"]
       }
     ]
   },
   tech: {
-    title: "Cac cong nghe Web",
+    title: "Web Technologies",
     articles: [
       {
         id: "frontend",
         title: "Frontend",
-        text: "Frontend gom HTML de mo ta cau truc, CSS de thiet ke giao dien responsive va JavaScript de tao trai nghiem dong. Cac framework nhu React giup chia giao dien thanh component de tai su dung.",
-        img: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=900&q=80",
-        ad: ["React documentation", "https://react.dev"]
+        text: "Frontend development uses HTML for structure, CSS for responsive presentation, and JavaScript for dynamic experiences. Frameworks such as React help split interfaces into reusable components.",
+        img: "assets/frontend.svg",
+        ad: ["React documentation", "https://react.dev", "assets/ad-tech.svg"]
       },
       {
         id: "backend",
         title: "Backend va Web API",
-        text: "Backend xu ly nghiep vu, luu tru du lieu va cung cap API. Cac API REST/JSON cho phep frontend, mobile app va dich vu ben thu ba giao tiep voi nhau thong qua HTTP.",
-        img: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=900&q=80",
-        ad: ["MDN Web APIs", "https://developer.mozilla.org/en-US/docs/Web/API"]
+        text: "Backend systems handle business logic, data storage, and API endpoints. REST/JSON APIs allow frontends, mobile apps, and third-party services to communicate over HTTP.",
+        img: "assets/backend.svg",
+        ad: ["MDN Web APIs", "https://developer.mozilla.org/en-US/docs/Web/API", "assets/ad-tech.svg"]
       }
     ]
   },
   student: {
-    title: "Thong tin sinh vien",
+    title: "Student Profile",
     articles: [
       {
         id: "cv",
-        title: "Ho so ca nhan",
+        title: "Personal Profile",
         custom: `
           <div class="student-card">
-            <img class="avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=500&q=80" alt="Anh sinh vien">
+            <img class="avatar" src="assets/student.svg" alt="Student portrait">
             <div>
-              <p><strong>Ho ten:</strong> Nguyễn Tuấn Đạt</p>
-              <p><strong>Ma so SV:</strong> 20235907</p>
+              <p><strong>Full name:</strong> Nguyen Tuan Dat</p>
+              <p><strong>Student ID:</strong> 20235907</p>
               <p><strong>Email:</strong> Dat.NT235907@sis.hust.edu.vn</p>
-              <p><strong>Kinh nghiem Web:</strong> HTML, CSS, JavaScript, React co ban, goi API bang fetch.</p>
-              <p><strong>So thich:</strong> Thiet ke giao dien gon gang, doc tai lieu cong nghe va xay dung san pham nho de hoc nhanh.</p>
+              <p><strong>Web experience:</strong> HTML, CSS, JavaScript, basic React, and API calls with fetch.</p>
+              <p><strong>Interests:</strong> Clean interface design, technology documentation, and building small products to learn quickly.</p>
             </div>
           </div>`,
-        ad: ["Cap nhat CV ca nhan", "#cv"]
+        ad: ["View student profile", "#cv", "assets/ad-profile.svg"]
       },
       {
         id: "projects",
-        title: "Du an da tham gia",
-        text: "Website gioi thieu mon hoc, ung dung quan ly cong viec ca nhan, trang tim kiem du lieu tu API cong khai va cac bai lab trong mon Cong nghe Web.",
-        img: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=80",
-        ad: ["GitHub ca nhan", "https://github.com"]
+        title: "Projects",
+        text: "A course introduction website, a personal task management app, a public API search page, and the lab exercises for the Web Technologies course.",
+        img: "assets/web-learning.svg",
+        ad: ["Personal GitHub", "https://github.com", "assets/ad-profile.svg"]
       }
     ]
   }
@@ -108,7 +108,10 @@ function render(sectionKey) {
           <div><p>${article.text}</p></div>
           <img src="${article.img}" alt="${article.title}">
         </div>`}
-      <a class="ad" href="${article.ad[1]}" target="_blank" rel="noopener">${article.ad[0]}</a>
+      <a class="ad" href="${article.ad[1]}" target="_blank" rel="noopener">
+        <img src="${article.ad[2]}" alt="${article.ad[0]}">
+        <span>${article.ad[0]}</span>
+      </a>
     </article>
   `).join("");
 

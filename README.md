@@ -1,21 +1,20 @@
 # Web Technologies and e-Services - Mini Projects
 
-Repo nay gom 3 bai mini project dau tien cua mon IT4409.
+This repository contains the first four mini projects for IT4409.
 
-## Cach chay
+## How To Run
 
-Khong can cai dat dependency. Mo truc tiep cac file sau bang browser:
+No dependency installation is required. Open these files directly in a browser:
 
-- `mini-project-1/index.html`: HTML, CSS va responsive layout.
-- `mini-project-2/index.html`: Dynamic HTML voi DOM JavaScript, co Admin page/menu left/content layout/content editor.
-- `mini-project-3/index.html`: Mo rong project #2 voi menu My Wiki va cac content item lay du lieu tu Wikipedia API.
+- `mini-project-1/index.html`: HTML, CSS, and responsive layout.
+- `mini-project-2/index.html`: Dynamic HTML with DOM JavaScript, including Admin page, left menu, content layout, and content editor.
+- `mini-project-3/index.html`: Extension with the My Wiki menu and content items loaded from the Wikipedia API.
+- `mini-project-4/index.html`: MyGmail Web Services API integration with Google Auth, Gmail API, Gemini API, and NganLuong payment payload preparation.
 
-## Ghi chu ca nhan hoa
+## Student Information
 
-Trong cac trang co san thong tin sinh vien mau:
+The project uses this student information:
 
-- Ho ten: Nguyễn Tuấn Đạt
-- MSSV: 20235907
+- Full name: Nguyen Tuan Dat
+- Student ID: 20235907
 - Email: Dat.NT235907@sis.hust.edu.vn
-
-Hay thay bang thong tin that cua nguoi nop bai truoc khi nop/cham diem.

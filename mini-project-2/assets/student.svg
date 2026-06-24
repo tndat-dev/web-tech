@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" role="img" aria-label="Student portrait">
+  <rect width="500" height="500" fill="#eff6ff"/>
+  <circle cx="250" cy="175" r="88" fill="#1d4ed8"/>
+  <path d="M95 430c34-112 96-168 155-168s121 56 155 168z" fill="#0f766e"/>
+  <text x="250" y="470" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#0f172a">Nguyen Tuan Dat</text>
+</svg>

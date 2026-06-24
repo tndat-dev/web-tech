@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" role="img" aria-label="Course information">
+  <rect width="900" height="560" fill="#f0fdfa"/>
+  <path d="M190 125h440c44 0 80 36 80 80v230H270c-44 0-80-36-80-80z" fill="#fff" stroke="#0f766e" stroke-width="10"/>
+  <path d="M270 125h440v310H270c-44 0-80-36-80-80V205c0-44 36-80 80-80z" fill="none" stroke="#14b8a6" stroke-width="6"/>
+  <rect x="315" y="190" width="300" height="28" rx="8" fill="#0f766e"/>
+  <rect x="315" y="255" width="330" height="20" rx="8" fill="#99f6e4"/>
+  <rect x="315" y="300" width="260" height="20" rx="8" fill="#99f6e4"/>
+</svg>
